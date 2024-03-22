@@ -7,9 +7,6 @@ import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 dotenv.config();
-console.log("====================================");
-console.log(process.env.MONGO);
-console.log("====================================");
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
