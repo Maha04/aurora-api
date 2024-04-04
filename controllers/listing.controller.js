@@ -11,6 +11,7 @@ export const createListing = async (req, res, next) => {
       images,
       bedrooms,
       bathrooms,
+      offer,
       parking,
       regularPrice,
       furnished,
