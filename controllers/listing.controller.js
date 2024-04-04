@@ -22,23 +22,23 @@ export const createListing = async (req, res, next) => {
     console.log("====================================");
     console.log(req.body);
     console.log("====================================");
-    if (
-      !address ||
-      !bathrooms ||
-      !bedrooms ||
-      !description ||
-      !discountPrice ||
-      !images ||
-      !name ||
-      !offer ||
-      !regularPrice ||
-      !type ||
-      !furnished ||
-      !parking ||
-      !userRef
-    ) {
-      return res.status(422).json({ message: "Some parameters are missing!" });
-    }
+    // if (
+    //   !address ||
+    //   !bathrooms ||
+    //   !bedrooms ||
+    //   !description ||
+    //   !discountPrice ||
+    //   !images ||
+    //   !name ||
+    //   !offer ||
+    //   !regularPrice ||
+    //   !type ||
+    //   !furnished ||
+    //   !parking ||
+    //   !userRef
+    // ) {
+    //   return res.status(422).json({ message: "Some parameters are missing!" });
+    // }
     const listing = await Listing.create({
       address,
       bathrooms,
