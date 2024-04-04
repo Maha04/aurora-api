@@ -18,6 +18,10 @@ export const createListing = async (req, res, next) => {
       discountPrice,
       userRef,
     } = req.body;
+    console.log(Object.keys(req.body));
+    console.log("====================================");
+    console.log(req.body);
+    console.log("====================================");
     if (
       !address ||
       !bathrooms ||
