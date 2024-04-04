@@ -5,9 +5,10 @@ import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
-import path from "path";
+import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
+
 dotenv.config();
 mongoose
   .connect(process.env.MONGO)
@@ -18,8 +19,8 @@ mongoose
     console.log(err);
   });
 
-const __dirname = path.resolve();
-
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 const app = express();
 
 app.use(express.json());
