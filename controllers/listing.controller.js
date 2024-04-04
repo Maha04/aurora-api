@@ -16,6 +16,7 @@ export const createListing = async (req, res, next) => {
       regularPrice,
       furnished,
       discountPrice,
+      userRef,
     } = req.body;
     if (
       !address ||
@@ -29,7 +30,8 @@ export const createListing = async (req, res, next) => {
       !regularPrice ||
       !type ||
       !furnished ||
-      !parking
+      !parking ||
+      !userRef
     ) {
       return res.status(422).json({ message: "Some parameters are missing!" });
     }
@@ -47,7 +49,9 @@ export const createListing = async (req, res, next) => {
       furnished,
       parking,
     });
-    return res.status(201).json(listing);
+    return res
+      .status(201)
+      .json({ listing, status: true, message: "Lising created successfully" });
   } catch (error) {
     next(error);
   }
