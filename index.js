@@ -7,6 +7,7 @@ import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import morgan from "morgan";
+import cors from "cors";
 dotenv.config();
 mongoose
   .connect(process.env.MONGO)
@@ -22,6 +23,7 @@ const __dirname = path.resolve();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(cookieParser());
 
