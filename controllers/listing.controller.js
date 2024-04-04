@@ -41,6 +41,7 @@ export const createListing = async (req, res, next) => {
       bedrooms,
       description,
       discountPrice,
+      userRef,
       imageUrls: images,
       name,
       offer,
