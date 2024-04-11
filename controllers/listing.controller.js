@@ -18,10 +18,6 @@ export const createListing = async (req, res, next) => {
       discountPrice,
       userRef,
     } = req.body;
-    console.log(Object.keys(req.body));
-    console.log("====================================");
-    console.log(req.body);
-    console.log("====================================");
     // if (
     //   !address ||
     //   !bathrooms ||
@@ -54,9 +50,20 @@ export const createListing = async (req, res, next) => {
       furnished,
       parking,
     });
-    return res
-      .status(201)
-      .json({ listing, status: true, message: "Lising created successfully" });
+    console.log(listing, "=========");
+    if (listing) {
+      return res
+        .status(201)
+        .json({
+          listing,
+          status: true,
+          message: "Lising created successfully",
+        });
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Something went wrong", status: false });
+    }
   } catch (error) {
     next(error);
   }
