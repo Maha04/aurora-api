@@ -18,42 +18,22 @@ export const createListing = async (req, res, next) => {
       discountPrice,
       userRef,
     } = req.body;
-    // if (
-    //   !address ||
-    //   !bathrooms ||
-    //   !bedrooms ||
-    //   !description ||
-    //   !discountPrice ||
-    //   !images ||
-    //   !name ||
-    //   !offer ||
-    //   !regularPrice ||
-    //   !type ||
-    //   !furnished ||
-    //   !parking ||
-    //   !userRef
-    // ) {
-    //   return res.status(422).json({ message: "Some parameters are missing!" });
-    // }
-    const listing = await Listing.create(
-      req.body
-      //   {
-      //   address,
-      //   bathrooms,
-      //   bedrooms,
-      //   description,
-      //   discountPrice,
-      //   userRef,
-      //   imageUrls: images,
-      //   name,
-      //   offer,
-      //   regularPrice,
-      //   type,
-      //   furnished,
-      //   parking,
-      // }
-    );
-    console.log(listing, "=========");
+
+    const listing = await Listing.create({
+      address,
+      bathrooms,
+      bedrooms,
+      description,
+      discountPrice,
+      userRef,
+      imageUrls: images,
+      name,
+      offer,
+      regularPrice,
+      type,
+      furnished,
+      parking,
+    });
     if (listing) {
       return res.status(201).json({
         listing,
@@ -166,7 +146,7 @@ export const getListings = async (req, res, next) => {
       .sort({ [sort]: order })
       .limit(limit)
       .skip(startIndex);
-
+    console.log(listings, "================");
     return res.status(200).json(listings);
   } catch (error) {
     next(error);
