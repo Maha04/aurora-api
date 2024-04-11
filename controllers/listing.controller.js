@@ -35,30 +35,31 @@ export const createListing = async (req, res, next) => {
     // ) {
     //   return res.status(422).json({ message: "Some parameters are missing!" });
     // }
-    const listing = await Listing.create({
-      address,
-      bathrooms,
-      bedrooms,
-      description,
-      discountPrice,
-      userRef,
-      imageUrls: images,
-      name,
-      offer,
-      regularPrice,
-      type,
-      furnished,
-      parking,
-    });
+    const listing = await Listing.create(
+      req.body
+      //   {
+      //   address,
+      //   bathrooms,
+      //   bedrooms,
+      //   description,
+      //   discountPrice,
+      //   userRef,
+      //   imageUrls: images,
+      //   name,
+      //   offer,
+      //   regularPrice,
+      //   type,
+      //   furnished,
+      //   parking,
+      // }
+    );
     console.log(listing, "=========");
     if (listing) {
-      return res
-        .status(201)
-        .json({
-          listing,
-          status: true,
-          message: "Lising created successfully",
-        });
+      return res.status(201).json({
+        listing,
+        status: true,
+        message: "Lising created successfully",
+      });
     } else {
       return res
         .status(400)
